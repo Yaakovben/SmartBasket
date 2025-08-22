@@ -3,8 +3,10 @@ import http from "http";
 import { Server } from "socket.io";
 import cors from "cors";
 import dotenv from "dotenv";
+import { conectToMongo } from "./mongoose/DB";
 import { router } from "./routes/router";
 import { SocketManagement } from "./socket/socket";
+
 
 dotenv.config();
 
@@ -13,7 +15,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+ conectToMongo();
+
+
+
 app.use(router);
+
 // יצירת שרת HTTP
 const server = http.createServer(app);
 
@@ -26,6 +33,8 @@ const io = new Server(server, {
 });
 
 SocketManagement(io);
+
+
 
 server.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
