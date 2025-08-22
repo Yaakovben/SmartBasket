@@ -1,0 +1,32 @@
+import express from "express";
+import http from "http";
+import { Server } from "socket.io";
+import cors from "cors";
+import dotenv from "dotenv";
+import { router } from "./routes/router";
+import { SocketManagement } from "./socket/socket";
+
+dotenv.config();
+
+const PORT = process.env.PORT || 3000;
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+app.use(router);
+// יצירת שרת HTTP
+const server = http.createServer(app);
+
+// יצירת Socket.IO
+const io = new Server(server, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"],
+  },
+});
+
+SocketManagement(io);
+
+server.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
