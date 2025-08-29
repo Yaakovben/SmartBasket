@@ -1,12 +1,12 @@
 import { Types } from "mongoose";
 import { List } from "../models/ListModel";
 
-export const checkingUserInListDal = async (
-  listName: string,
-  userId: string
-) => {
+export const checkingUserInListDal = async (listId: string, userId: string) => {
   try {
-    return await List.findOne({ listName, userIds: userId });
+    return await List.findOne({
+      _id: listId,
+      userIds: userId,
+    });
   } catch (error: any) {
     return Promise.reject(error);
   }

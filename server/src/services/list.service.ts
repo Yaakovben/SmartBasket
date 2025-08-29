@@ -1,17 +1,16 @@
 import {
   checkingUserInListDal,
   createListDal,
-  deleteListDal,
   joinToListDal,
   leaveListDal,
 } from "../dal/list.dal";
 
 export const checkingUserInListSerice = async (
-  listName: string,
+  listId: string,
   userId: string
 ) => {
   try {
-    return await checkingUserInListDal(listName, userId);
+    return await checkingUserInListDal(listId, userId);
   } catch (error) {
     return Promise.reject(error);
   }
