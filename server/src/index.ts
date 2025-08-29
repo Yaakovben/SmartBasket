@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 import { conectToMongo } from "./mongoose/DB";
 import { router } from "./routes/router";
 import { SocketManagement } from "./socket/socket";
+import morganLogger from "./middlewares/morgan";
 
 
 dotenv.config();
@@ -13,6 +14,7 @@ dotenv.config();
 const PORT = process.env.PORT || 3000;
 const app = express();
 app.use(cors());
+app.use(morganLogger)
 app.use(express.json());
 
  conectToMongo();

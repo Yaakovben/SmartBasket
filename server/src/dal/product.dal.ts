@@ -10,7 +10,7 @@ export const createProductDal = async ({
   try {
     return await Product.create({ listId, name, quantity, imageUrl });
   } catch (error: any) {
-    throw new Error(error);
+    return Promise.reject(error);
   }
 };
 
