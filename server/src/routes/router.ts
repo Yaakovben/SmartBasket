@@ -1,25 +1,25 @@
 import { Router } from "express";
 import {
-  addProduct,
-  deleteProduct,
-  getProductsByListId,
-  updateProduct,
+  addProductController,
+  deleteProductController,
+  getProductsByListIdController,
+  updateProductController,
 } from "../controllers/product.controller";
 import {
-  createList,
-  joinToList,
-  leaveList,
+  createListController,
+  joinToListController,
+  leaveListController,
   updateListNameController,
 } from "../controllers/list.controller";
 
 export const router = Router();
 
-router.post("/add-product", addProduct);
-router.put("/update-product/:id", updateProduct);
-router.get("/get-products-by-list/:listId", getProductsByListId);
-router.delete("/delete-product/:id", deleteProduct);
+router.post("/add-product", addProductController);
+router.put("/update-product/:id", updateProductController);
+router.get("/get-products-by-list/:listId", getProductsByListIdController);
+router.delete("/delete-product/:id", deleteProductController);
 
-router.post("/add-list", createList);
-router.patch("/join-to-list/:listId", joinToList);
-router.patch("/left-list/:listId", leaveList);
+router.post("/add-list", createListController);
+router.patch("/join-to-list/:listId", joinToListController);
+router.patch("/left-list/:listId", leaveListController);
 router.patch("/update-list-name/:listId", updateListNameController);

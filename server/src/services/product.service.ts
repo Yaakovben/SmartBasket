@@ -1,4 +1,4 @@
-import { updateListNameDal } from "../dal/list.dal";
+import { Types } from "mongoose";
 import {
   createProductDal,
   deleteProductDal,
@@ -6,6 +6,7 @@ import {
   updateProductDal,
 } from "../dal/product.dal";
 import { ProductInterface } from "../types/product.types";
+import { CustomError } from "../utils/handleError";
 
 export const createProdctService = async (data: ProductInterface) => {
   try {
@@ -20,6 +21,10 @@ export const updateProductService = async (
   data: ProductInterface
 ) => {
   try {
+    // Id בדיקת תקינות ה
+    if (!Types.ObjectId.isValid(prodactId))
+      throw new CustomError("Invalid prodactId", 400, "PRODUCT-ERROR");
+
     return await updateProductDal(prodactId, data);
   } catch (error) {
     return Promise.reject(error);
@@ -28,6 +33,9 @@ export const updateProductService = async (
 
 export const deleteProductService = async (prodactId: string) => {
   try {
+    // Id בדיקת תקינות ה
+    if (!Types.ObjectId.isValid(prodactId))
+      throw new CustomError("Invalid prodactId", 400, "PRODUCT-ERROR");
     return await deleteProductDal(prodactId);
   } catch (error) {
     return Promise.reject(error);
@@ -36,16 +44,11 @@ export const deleteProductService = async (prodactId: string) => {
 
 export const getProductsByListIdService = async (listId: string) => {
   try {
+     // Id בדיקת תקינות ה
+    if (!Types.ObjectId.isValid(listId))
+      throw new CustomError("Invalid listId", 400, "PRODUCT-ERROR");
     return await getProductsByListIdDal(listId);
   } catch (error) {
     return Promise.reject(error);
   }
 };
-
-export const updateListNameService = async (listId: string, newName: string) => {
-  try {
-    return await updateListNameDal(listId, newName);
-  } catch (error) {
-    return Promise.reject(error);
-  }
-}
