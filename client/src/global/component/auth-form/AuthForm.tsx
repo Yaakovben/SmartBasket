@@ -4,6 +4,7 @@ import TextInput from "../form-input/FormInput";
 import type { FieldType, LinkType } from "../../types/auth-form.types";
 import Joi from "joi";
 import { useAuthForm } from "../../../auth/hooks/useAuthForm";
+import { redirect } from "react-router-dom";
 
 type AuthFormProps = {
   title?: string;
@@ -12,6 +13,7 @@ type AuthFormProps = {
   validationSchema: Joi.ObjectSchema;
   onSubmit: (values: Record<string, string>) => Promise<void> | void;
   links?: LinkType[];
+  redirectPath?: string;
 };
 
 const AuthForm = ({
@@ -21,16 +23,17 @@ const AuthForm = ({
   validationSchema,
   onSubmit,
   links,
+  redirectPath,
 }: AuthFormProps) => {
   const {
     values,
     errors,
-    showPass,
+    showPassword,
     handleChange,
     handleSubmit,
     isFormValid,
-    toggleShowPass,
-  } = useAuthForm(fields, validationSchema, onSubmit);
+    toggleShowPassword,
+  } = useAuthForm(fields, validationSchema, onSubmit, redirectPath);
   const styles = {
     wrapper: {
       display: "flex",
@@ -65,8 +68,8 @@ const AuthForm = ({
               value={values[field.name]}
               error={errors[field.name]}
               onChange={handleChange}
-              showPass={showPass}
-              toggleShowPass={toggleShowPass}
+              showPassword={showPassword}
+              toggleShowPassword={toggleShowPassword}
             />
           ))}
 

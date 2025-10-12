@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import AuthForm from "../../global/component/auth-form/AuthForm";
 import { registerService } from "../../services/authService";
-import { registerSchema } from "../../validations/registerSchema";
+import { registerSchema } from "../helpers/validations/registerSchema";
 import {
   getRegisterLinks,
   registerFields,
@@ -18,6 +18,7 @@ const Register = () => {
       title="הרשמה"
       validationSchema={registerSchema}
       links={registerLinks}
+      redirectPath="/login"
     />
   );
 };

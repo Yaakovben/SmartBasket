@@ -9,8 +9,8 @@ type TextInputProps = {
   value: string;
   error?: string;
   onChange: (name: string, value: string) => void;
-  showPass?: boolean;
-  toggleShowPass?: () => void;
+  showPassword?: boolean;
+  toggleShowPassword?: () => void;
 };
 
 const TextInput = ({
@@ -20,12 +20,12 @@ const TextInput = ({
   value,
   error,
   onChange,
-  showPass,
-  toggleShowPass,
+  showPassword,
+  toggleShowPassword,
 }: TextInputProps) => (
   <TextField
     label={label}
-    type={type === "password" && !showPass ? "password" : "text"}
+    type={type === "password" && !showPassword ? "password" : "text"}
     value={value}
     onChange={(e) => onChange(name, e.target.value)}
     size="small"
@@ -37,8 +37,8 @@ const TextInput = ({
         ? {
             endAdornment: (
               <InputAdornment position="end">
-                <IconButton onClick={toggleShowPass} size="small">
-                  {showPass ? <VisibilityOff /> : <Visibility />}
+                <IconButton onClick={toggleShowPassword} size="small">
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
                 </IconButton>
               </InputAdornment>
             ),
