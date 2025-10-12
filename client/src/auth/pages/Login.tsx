@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import AuthForm from "../../global/component/auth-form/AuthForm";
 import { loginService } from "../../services/authService";
 import { loginSchema } from "../helpers/validations/loginSchema";
 import { getLoginLinks, loginFields } from "../helpers/login/login.props";
+import AuthForm from "../component/auth-form/AuthForm";
 
 const Login = () => {
   const navigate = useNavigate();

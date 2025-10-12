@@ -1,7 +1,7 @@
 import { useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import Joi from "joi";
-import type { FieldType } from "../../global/types/auth-form.types";
+import type { FieldType } from "../types/auth-form.types";
 
 export const useAuthForm = (
   fields: FieldType[],

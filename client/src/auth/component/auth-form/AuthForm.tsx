@@ -1,9 +1,9 @@
 import { Box, Paper, Button, Typography } from "@mui/material";
 import LinksForm from "./links-auth-form/LinksAuthForm";
 import TextInput from "../form-input/FormInput";
-import type { FieldType, LinkType } from "../../types/auth-form.types";
 import Joi from "joi";
 import { useAuthForm } from "../../../auth/hooks/useAuthForm";
+import type { FieldType, LinkType } from "../../types/auth-form.types";
 
 type AuthFormProps = {
   title?: string;
