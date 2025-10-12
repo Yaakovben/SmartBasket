@@ -4,7 +4,6 @@ import TextInput from "../form-input/FormInput";
 import type { FieldType, LinkType } from "../../types/auth-form.types";
 import Joi from "joi";
 import { useAuthForm } from "../../../auth/hooks/useAuthForm";
-import { redirect } from "react-router-dom";
 
 type AuthFormProps = {
   title?: string;
