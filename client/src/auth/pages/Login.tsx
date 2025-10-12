@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { loginService } from "../../services/authService";
+import { loginService } from "../services/authService";
 import { loginSchema } from "../helpers/validations/loginSchema";
 import { getLoginLinks, loginFields } from "../helpers/login/login.props";
 import AuthForm from "../component/auth-form/AuthForm";

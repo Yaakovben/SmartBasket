@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { registerService } from "../../services/authService";
+import { registerService } from "../services/authService";
 import { registerSchema } from "../helpers/validations/registerSchema";
 import {
   getRegisterLinks,
