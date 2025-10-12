@@ -1,5 +1,6 @@
-import AuthForm from "../global/component/AuthForm";
-import { registerService } from "../services/authService";
+import AuthForm from "../../global/component/auth-form/AuthForm";
+import { registerService } from "../../services/authService";
+import { registerSchema } from "../../validations/registerSchema";
 
 type RegisterProps = {};
 
@@ -12,6 +13,7 @@ const Register = ({}: RegisterProps) => {
       ]}
       onSubmit={(values) => registerService(values.username, values.password)}
       title="הרשמה"
+      validationSchema={registerSchema}
     />
   );
 };
