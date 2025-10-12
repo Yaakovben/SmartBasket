@@ -13,12 +13,12 @@ export const registerSchema = Joi.object({
     }),
 
   password: Joi.string()
-    .min(6)
+    .min(3)
     .max(50)
     .required()
     .messages({
       "string.empty": "אנא הזן סיסמה",
-      "string.min": "הסיסמה חייבת להכיל לפחות 6 תווים",
+      "string.min": "הסיסמה חייבת להכיל לפחות 3 תווים",
       "string.max": "הסיסמה לא יכולה להכיל יותר מ-50 תווים",
       "any.required": "הסיסמה היא שדה חובה",
     }),

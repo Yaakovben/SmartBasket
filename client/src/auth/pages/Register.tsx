@@ -1,19 +1,23 @@
+import { useNavigate } from "react-router-dom";
 import AuthForm from "../../global/component/auth-form/AuthForm";
 import { registerService } from "../../services/authService";
 import { registerSchema } from "../../validations/registerSchema";
+import {
+  getRegisterLinks,
+  registerFields,
+} from "../helpers/register/register.props";
 
-type RegisterProps = {};
+const Register = () => {
+  const navigate = useNavigate();
 
-const Register = ({}: RegisterProps) => {
+  const registerLinks = getRegisterLinks(navigate);
   return (
     <AuthForm
-      fields={[
-        { name: "username", label: "שם משתמש" },
-        { name: "password", label: "סיסמה", type: "password" },
-      ]}
+      fields={registerFields}
       onSubmit={(values) => registerService(values.username, values.password)}
       title="הרשמה"
       validationSchema={registerSchema}
+      links={registerLinks}
     />
   );
 };
